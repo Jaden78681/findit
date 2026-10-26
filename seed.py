@@ -1,5 +1,5 @@
 """
-FindIt - demo data for practice and for the demo video.
+FindIt - demo data, so the app can be tried right away.
 
 Run:  python seed.py
 WARNING: this deletes findit.db and starts fresh with sample items.
@@ -175,7 +175,7 @@ def add_jaden(today, now):
       Jaden LOST his white earbuds and turned on an alert ("white earbuds") 4 days ago.
       D  earbuds case  -> Nana found them yesterday and turned them in at the Library Desk
                           -> Jaden got an alert message
-    In the video Jaden: reports a blue bottle -> adds a new alert -> reads the alert message
+    Demo walkthrough as Jaden: reports a blue bottle -> adds a new alert -> reads the alert message
                         -> "It's mine!" on the earbuds -> picks them up at the Library Desk.
     """
     def report(finder, key, category, desc, location, days_ago, hour, valuable=False, kept_at=None):
@@ -196,7 +196,7 @@ def add_jaden(today, now):
 
     with db.connect() as conn:   # older history = already read
         conn.execute("UPDATE messages SET is_read = 1")
-    # ...but keep "Max picked up your bottle" as a NEW message for the video
+    # ...but keep "Max picked up your bottle" as a NEW message for the demo
     with db.connect() as conn:
         conn.execute("""UPDATE messages SET is_read = 0 WHERE to_user = 'Jaden' AND item_id = ?
                         AND text LIKE '%msg_picked_up%'""", (a,))

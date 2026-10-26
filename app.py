@@ -226,7 +226,7 @@ def account_bar():
 
 
 # ---------------------------------------------------------------------------
-# Opening slides (for the presentation video)
+# Opening slides (optional, for presentations)
 #   OFF by default: the app opens straight to the log-in screen.
 #   To show Jaden's slides (assets/slides/slide-1.jpg …) full screen first,
 #   add ?slides=on at the end of the address. Click = next slide; the last click opens the log-in screen.
