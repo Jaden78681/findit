@@ -227,16 +227,15 @@ def account_bar():
 
 # ---------------------------------------------------------------------------
 # Opening slides (for the presentation video)
-#   The app starts with Jaden's slides (assets/slides/slide-1.jpg …), full screen.
-#   Click anywhere = next slide. A click on the last slide opens the log-in screen.
-#   To skip them, open the app with ?slides=off at the end of the address.
+#   OFF by default: the app opens straight to the log-in screen.
+#   To show Jaden's slides (assets/slides/slide-1.jpg …) full screen first,
+#   add ?slides=on at the end of the address. Click = next slide; the last click opens the log-in screen.
 # ---------------------------------------------------------------------------
 
 SLIDE_DIR = os.path.join(ASSETS, "slides")
 SLIDES = sorted(f for f in os.listdir(SLIDE_DIR) if f.lower().endswith((".jpg", ".png"))) if os.path.isdir(SLIDE_DIR) else []
-if st.query_params.get("slides") == "off":
-    st.session_state.slide = len(SLIDES)
-st.session_state.setdefault("slide", 0)
+if "slide" not in st.session_state:
+    st.session_state.slide = 0 if st.query_params.get("slides") == "on" else len(SLIDES)
 
 
 def next_slide():
